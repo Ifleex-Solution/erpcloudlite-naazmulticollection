@@ -1,0 +1,1 @@
+ALTER TABLE store ADD COLUMN store_nature VARCHAR(50) NULL;

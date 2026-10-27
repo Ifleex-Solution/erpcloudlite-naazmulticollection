@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-bd lobidrag">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <h4 style="display:inline-block; margin:0 14px 0 0;"><?php echo display('payment_method_list') ?> </h4>
+                     <span class="padding-lefttitle">
+                         <?php if ($this->permission1->method('add_payment_method', 'create')->access()) { ?>
+                         <a href="<?php echo base_url('add_payment_method') ?>" class="btn btn-primary m-b-5 m-r-2"><i class="ti-plus"> </i> <?php echo display('add_payment_method') ?> </a>
+                         <?php } ?>
+                     </span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered datatable">
+                    <thead>
+                        <tr>
+                            <th><?php echo display('sl_no') ?></th>
+                            <th><?php echo display('payment_method_name') ?></th>
+                            <th>Payment Nature</th>
+                            <th>Status</th>
+                            <th class="text-center"><?php echo display('action') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($pmethods) {
+                            $sl = 1;
+                            foreach ($pmethods as $methods) {
+                        ?>
+                                <tr>
+                                    <td><?php echo $sl++; ?></td>
+                                    <td><?php echo $methods->name; ?></td>
+                                    <td><?php echo !empty($methods->nature) ? $methods->nature : '—'; ?></td>
+                                    <td>
+                                    <?php if ($methods->status_label == "Active") { ?>
+                                            <span class="label label-success">Active</span>
+                                        <?php } else { ?>
+                                            <span class="label label-danger">Inactive</span>
+                                        <?php } ?>
+                                        
+                                    </td>
+
+                                    <td class="text-center">
+                                        <?php if ($this->permission1->method('payment_method_list', 'update')->access()) { ?>
+                                            <a href="<?php echo base_url() . 'add_payment_method/' . $methods->id; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <?php } ?>
+                                        <?php if ($this->permission1->method('payment_method_list', 'delete')->access()&& $methods->id!=1) { ?>
+                                            <a href="<?php echo base_url() . 'account/accounts/delete_payment_method/' . $methods->id; ?>" class="btn btn-danger btn-xs" data-toggle="tooltip" onclick="return confirm('Are You Sure ?')" data-placement="left" title="" data-original-title="<?php echo display('delete') ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                                        <?php } ?>
+                                    </td>
+
+                                </tr>
+                        <?php }
+                        } ?>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

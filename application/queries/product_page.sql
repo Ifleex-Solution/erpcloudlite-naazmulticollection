@@ -1,0 +1,5 @@
+ALTER TABLE product_information
+ADD COLUMN max_stock_level DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+ADD COLUMN min_stock_level DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+ADD COLUMN reorder_stock_level DECIMAL(18,2) NOT NULL DEFAULT 0.00,
+ADD COLUMN reserve_stock_level DECIMAL(18,2) NOT NULL DEFAULT 0.00;

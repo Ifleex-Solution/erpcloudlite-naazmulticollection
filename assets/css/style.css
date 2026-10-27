@@ -1,0 +1,1988 @@
+/* Folded-corner accent on panel headers — overrides bdtask-main.css's
+   solid green triangle (border-top:#37a000) to match the purple theme. */
+.panel-bd .panel-heading::before {
+    border-top-color: #8b5cf6 !important;
+}
+
+/* Site-wide default link color — bdtask-main.css sets a bare `a{color:#37a000}`
+   (green) with very low specificity, so any plain <a> with no other color
+   rule (e.g. the "Invoice No" link built in Service_model.php's service()
+   method) renders green. Overriding it here with a class-level selector
+   beats the bare element rule without !important, while buttons/badges
+   that already set their own color are untouched. */
+a:not(.btn):not(.label) {
+    color: #8b5cf6;
+}
+a:not(.btn):not(.label):hover,
+a:not(.btn):not(.label):focus {
+    color: #6D28D9;
+}
+
+/* Select2 dropdown box itself (closed state + focus/open) — a global
+   fallback for any .panel.panel-bd.lobidrag screen that was never part
+   of the earlier per-file select2 sweep (those sweeps only matched files
+   that already had a hardcoded color to replace; a "clean" screen like
+   Service Order never had one, so it was never touched and still showed
+   the bare theme default with no purple at all). */
+.panel.panel-bd.lobidrag .select2-container .select2-selection--single {
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    background: #F8FAFC !important;
+    height: 38px !important;
+}
+.panel.panel-bd.lobidrag .select2-container .select2-selection--single .select2-selection__rendered {
+    color: #374151 !important;
+    font-size: 13px !important;
+    line-height: 36px !important;
+    padding-left: 10px !important;
+}
+.panel.panel-bd.lobidrag .select2-container .select2-selection--single .select2-selection__arrow {
+    height: 36px !important;
+}
+.panel.panel-bd.lobidrag .select2-container--default.select2-container--focus .select2-selection--single,
+.panel.panel-bd.lobidrag .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #8b5cf6 !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(139,92,246,.12) !important;
+    outline: none !important;
+}
+
+
+/* Popup shell — Bootstrap's plain modal card (sharp corners, flat header,
+   hard shadow) didn't match the rounded, soft-shadow panel cards used
+   everywhere else in the app. Unscoped, so it covers every modal sitewide
+   (Filter Options, Add Customer, Add Product, etc.), not just one. */
+.modal-content {
+    border: none !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18) !important;
+    overflow: hidden !important;
+}
+.modal-header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #F1F5F9 !important;
+    padding: 16px 22px !important;
+}
+.modal-title {
+    color: #1E293B !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+}
+.modal-header .close {
+    color: #94A3B8 !important;
+    opacity: 1 !important;
+    font-weight: 400 !important;
+    text-shadow: none !important;
+    transition: color 0.15s !important;
+}
+.modal-header .close:hover,
+.modal-header .close:focus {
+    color: #8b5cf6 !important;
+}
+.modal-body {
+    padding: 20px 22px !important;
+}
+.modal-footer {
+    border-top: 2px solid #F1F5F9 !important;
+    padding: 14px 22px !important;
+}
+
+/* Same select2 + button theming for standalone Bootstrap modals (e.g. the
+   "Filter Options" modal reused across ~16 manage_*.php list screens) —
+   .modal is never nested inside .panel.panel-bd.lobidrag, so none of the
+   rules above ever reached it, leaving its dropdown and "Apply Filter"
+   button on the bare un-themed default. One global fix instead of 16. */
+.modal .select2-container .select2-selection--single {
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    background: #F8FAFC !important;
+    height: 38px !important;
+}
+.modal .select2-container .select2-selection--single .select2-selection__rendered {
+    color: #374151 !important;
+    font-size: 13px !important;
+    line-height: 36px !important;
+    padding-left: 10px !important;
+}
+.modal .select2-container .select2-selection--single .select2-selection__arrow {
+    height: 36px !important;
+}
+.modal .select2-container--default.select2-container--focus .select2-selection--single,
+.modal .select2-container--default.select2-container--open .select2-selection--single {
+    border-color: #8b5cf6 !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(139,92,246,.12) !important;
+    outline: none !important;
+}
+.modal .form-control {
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    color: #374151 !important;
+    background: #F8FAFC !important;
+    height: auto !important;
+    transition: border-color 0.16s, box-shadow 0.16s, background 0.16s !important;
+}
+.modal .form-control:focus {
+    border-color: #8b5cf6 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(139,92,246,.12) !important;
+    outline: none !important;
+}
+.modal label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+}
+.modal-footer .btn.btn-primary {
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+}
+.modal-footer .btn.btn-primary:hover {
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+    box-shadow: 0 4px 12px rgba(139,92,246,0.35) !important;
+}
+/* "Close" — same ghost-purple treatment as the "Go Back" button on forms,
+   so the modal's secondary action matches the rest of the theme instead
+   of Bootstrap's plain grey .btn-default default. */
+.modal-footer .btn.btn-default {
+    border: 1.5px solid #D8CCFB !important;
+    border-radius: 8px !important;
+    background: #F5F2FE !important;
+    color: #7C3AED !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+.modal-footer .btn.btn-default:hover,
+.modal-footer .btn.btn-default:focus {
+    background: #E9E2FD !important;
+    border-color: #C4B5FD !important;
+    color: #6D28D9 !important;
+}
+
+/* "+ Add New Item" row button — shared id="add_invoice_item" across 9
+   item-table forms (Sale, Quotation, Purchase x3, Stock Adjustment,
+   Store Transfer, Opening Stock, Stock Disposal Note). None of them had
+   their own color rule for it, so it fell back to Bootstrap's default
+   .btn-info (cyan/blue). One global fix instead of patching 9 files. */
+#add_invoice_item {
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    color: #fff !important;
+}
+#add_invoice_item:hover {
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+}
+
+/* "Add Purchase" / "Add Invoice" row buttons — Supplier Payment's and
+   Customer Receive's own invoice/purchase picker tables (id="sp_add_row_btn",
+   id="cr_add_row_btn"). Same off-theme default-green .btn-success-btn-sm
+   gap as #add_invoice_item above, just under different ids. */
+#sp_add_row_btn,
+#cr_add_row_btn {
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    color: #fff !important;
+}
+#sp_add_row_btn:hover,
+#cr_add_row_btn:hover {
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+}
+#sp_add_row_btn:disabled,
+#cr_add_row_btn:disabled {
+    background: #CBD5E1 !important;
+    color: #64748B !important;
+    cursor: not-allowed !important;
+}
+
+/* DataTables pagination "current page" highlight — bdtask-main.css's
+   default Bootstrap pagination.active style (#337ab7 blue), applied
+   globally so every DataTable's pagination matches, not just the screens
+   we've touched directly. */
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: #8b5cf6 !important;
+    border-color: #8b5cf6 !important;
+    /* Explicit + !important so it beats the generic li>a color rule below
+       (which also matches the active li's own <a>) — without this the
+       page number rendered purple text on the purple active background,
+       i.e. invisible. */
+    color: #fff !important;
+}
+.pagination > li:not(.active) > a,
+.pagination > li:not(.active) > span {
+    color: #8b5cf6 !important;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    background-color: #F3F0FE !important;
+    border-color: #DDD6FE !important;
+}
+
+/* Active/Inactive status badges — same colors (green/red) already used on
+   Branch, Store, Brand, Category, Subcategory and Unit; applied globally
+   so every list screen gets the identical shape/size too, instead of
+   falling back to the theme's default badge style on pages that never had
+   their own copy of this rule. */
+.label-success {
+    background: #16A34A !important;
+    color: #fff !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    line-height: 1.4 !important;
+    border: none !important;
+}
+.label-danger {
+    background: #DC2626 !important;
+    color: #fff !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    line-height: 1.4 !important;
+    border: none !important;
+}
+
+/* Select2 dropdown defaults (bdtask-main.css) — covers every select2 on
+   the site, including pages (like the DataTables page-length picker) that
+   don't have their own per-page select2 override. */
+.select2-results__option--highlighted[aria-selected] {
+    background-color: #8b5cf6 !important;
+    color: #fff !important;
+}
+.select2-results__option[aria-selected=true] {
+    background-color: #F3F0FE !important;
+    color: #8b5cf6 !important;
+}
+
+.category >.nav-tabs > li.active > a {
+  background-color: #3B8104 !important;
+  color: #fff !important;
+  border-radius: 4;
+}
+.category >.nav-tabs > li> a {
+  background-color: #1C93C7 !important;
+  color: #fff !important;
+  border-radius: 4;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+.cat-tabcontent{
+	padding: 20px;
+}
+
+.product-supplier{
+	margin-top: 10px;
+}
+.productbarcode-margin{
+	margin-left: 250px;
+}
+.barcode-toptd{
+	border: 1px solid black ;padding: 5px;
+}
+
+.barcode-innerdiv{
+	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+	text-align: center; position: relative;
+}
+
+.barcode-productname{
+	text-transform: uppercase;
+	line-height: 10px;
+	font-weight: 600;
+	font-size: 12px;
+	margin-bottom: 3px;
+}
+
+.barcode-modelname{
+	font-weight: 600;
+	 font-size: 8px;
+     position: absolute;
+     top: 0;
+     right: 0;"
+}
+
+.barcode-image{
+	display: block;margin-left: auto;
+	margin-right: auto;height: 60px;
+	width: 143px;
+}
+
+.barcode-productdetails{
+	font-size: 11px;letter-spacing: 0.5px;
+	font-weight: 600;
+	text-transform: uppercase;
+	line-height: 10px;
+}
+.barcode-price{
+	font-weight: 500;
+	line-height: 10px;
+	 margin-top: 5px;
+    font-weight: 500;
+    line-height: 10px;
+    margin-top: 5px;
+}
+
+.barcode-vat{
+	font-weight: 600;
+	font-size: 9px;
+}
+.qrcode-image{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height:150px
+}
+
+.qrcode-productdetails{
+	font-size: 11px;
+	letter-spacing: 0.5px;
+	font-weight: 600;
+	text-transform: uppercase;
+	line-height: 8px;
+}
+
+.barcode-collaps{
+	border-collapse: collapse;
+}
+ .text-right{
+	text-align: right !important;
+}
+ .text-left{
+	text-align: left !important;
+}
+
+
+
+.print-button{
+	float:right;
+}
+
+#bank_div{
+	display: none;
+}
+
+.purchasedetails-header{
+	/* border-bottom:2px #333 solid; */
+}
+
+.purchasedetails-address{
+	display: inline-block;
+	width: 64%;
+  margin-left: 10px;
+}
+
+.companyname{
+	font-size: 20px;
+}
+
+.usablity{
+	text-align:left;
+	font-size:15px;
+	color: green;
+	font-weight: bold;
+}
+
+.invoice-details-billing{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.details-address{
+	margin-top:10px;
+	width: 200px;
+}
+
+    #bank_info_hide
+    {
+        display:none;
+    }
+    #payment_from_2
+    {
+        display:none;
+    }
+.hiddenRow {
+  display: none;
+}
+
+.product_field{
+	width: 220px;
+}
+
+.invoice_fields{
+	width: 100px;
+}
+
+.margin-top10{
+	margin-top:10px;
+}
+
+#quotation_service{
+	display: none;
+}
+
+#service_quotation_div{
+	margin-left: 20px;
+}
+
+/*invoice print part*/
+
+
+.print_header{
+	border-bottom:2px #333 solid;
+}
+
+.company-content{
+	display: inline-block;
+	width: 64%;
+}
+
+.img-bottom-m{
+	margin-bottom:10px;
+}
+
+.margin-top10{
+	margin-top:10px;
+}
+
+.company_name_p{
+	font-size: 20px; 
+}
+
+.invoice-address{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.customer_name_p{
+	margin-top:10px;
+	width: 200px
+}
+
+.c_name{
+	font-size: 20px;
+}
+
+.productdatalineheight{
+	line-height: 0.42857143;
+}
+.inline-block{
+	display: inline-block;
+}
+
+.invoicefooter-content{
+	display: inline-block;
+	width: 66%;
+}
+
+.border-bottom-top{
+	border-top: 0; 
+	border-bottom: 0;
+}
+
+.inv-footer-left{
+	float:left;width:35%;
+	text-align:center;
+	border-top:1px solid #e4e5e7;
+	font-weight: bold;
+}
+
+.inv-footer-right{
+	float:left;width:35%;
+	text-align:right;
+	float: right;
+	border-top:1px solid #e4e5e7;
+	font-weight: bold;
+}
+
+.margin-top50{
+	margin-top: 50px;
+}
+
+.minpos-bordertop{
+	border-top:#333 1px solid;
+}
+.sig_div{
+	margin-top:30px;
+	float:right;width:90%;
+	text-align:center;
+	border-top:1px solid #e4e5e7;
+	font-weight: bold;
+}
+.pthead{
+	font-weight: bold;
+}
+
+.posprint-head{
+	border-bottom:2px #333 solid;
+}
+.posprint-com-info{
+	font-size: 17pt;
+	 font-weight:bold;
+}
+
+.pprint-unit{
+	padding:4px;
+}
+
+/*quotation details css*/
+.marginleft5{
+ margin-left: 5px;
+}
+
+.fl-left{
+	display: flex;
+}
+
+.logo-content{
+	width: 40%;
+	 margin-top: 5px;
+}
+
+.com-content{
+	width: 30%;
+	 margin-top: 5px;
+}
+
+.title-text{
+	border:1px;
+	background-color: #DDE4EB;
+	color:#000;
+}
+
+.desc-div{
+	width: 50%;
+	 margin-left: 30px;
+}
+
+
+/*common Report Header part*/
+
+.print-table-tr{
+	border-bottom:2px #333 solid;
+}
+
+.print-cominfo{
+	border-bottom:2px #333 solid;
+	padding-right: 100px;
+}
+
+.company-txt{
+	font-size: 17pt; font-weight:bold;
+}
+
+
+.fa-folder{
+color:#D4AC0D;
+}
+.fa-folder-open-o{
+color:#D4AC0D;
+}
+
+.navbar .btn-success{
+    margin: 13px 2px;
+}
+.prints{
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    color:#fff;
+    margin: 0 4px !important;
+    border-radius: 6px !important;
+}
+.prints:hover{
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+}
+
+/* Save/Update button loading state — used across invoice/purchase/stock save forms */
+.btn-save-anim {
+    transition: opacity .15s ease, transform .1s ease, box-shadow .2s ease;
+}
+.btn-save-anim:not(:disabled):active {
+    transform: scale(0.97);
+}
+.btn-save-anim.btn-save-anim-loading {
+    opacity: .8;
+    pointer-events: none;
+    box-shadow: 0 0 0 3px rgba(139,92,246,.15);
+}
+.btn-save-anim .fa-spinner {
+    animation: btnSaveSpin .7s linear infinite;
+}
+@keyframes btnSaveSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.phdiv{
+	margin:0;
+	font-family:Arial,Helvetica,sans-serif;
+	border-bottom:1;
+	background-color: #ffffff;
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+}
+
+.psigpart{
+	margin-top:10px;
+	float:right;width:30%;
+	text-align:center;border-top:1px solid #e4e5e7;
+}
+
+.print-footercolor{
+	color: #fff;
+}
+
+.ledgrhead{
+	background-color: #7EA48E ;
+	color:#fff;
+}
+
+.prbalance{
+	float: right;
+}
+
+.footersignature{
+	border-top: solid 1px #000;
+}
+
+.signaturetable{
+	margin-top: 50px;
+}
+
+.profilossphead{
+	font-size:20px;
+	 font-weight:bold;
+	 border-right:solid 1px #000; 
+	 border-left:solid 1px #000;
+	  border-top:solid 1px #000;
+	  color: green;
+}
+
+.profitlossbranchead{
+	border-left:solid 1px #000; border-top:solid 1px #000; 
+}
+
+.font-bold{
+	 font-weight:bold;
+}
+
+.profitlossbrancheadamount{
+border-left:solid 1px #000; 
+ border-right:solid 1px #000;
+  border-top:solid 1px #000;
+}
+
+.profitlosstablehead{
+font-size:18px; 
+border-left:solid 1px #000; 
+border-top:solid 1px #000;	
+}
+
+.profitloss-result{
+	background-color: green;
+	color: #fff;
+}
+
+.totalliability{
+	border-style: double;
+    border-left: none;
+    border-right:none;
+    border-top:none;
+}
+
+.cashflowparticular{
+	padding-left:10px; 
+	border:1px solid #000;
+}
+
+.cashflowamount{
+	padding-left:10px;
+	 padding-right:10px; 
+	  border:1px solid #000;
+}
+
+.paddingleft10px{
+	padding-left:10px; 
+}
+
+.cashflowamnt{
+	padding-right:10px; 
+	border-left: solid 1px #000;
+	 border-right:solid 1px #000;
+}
+
+.paddingleftright10{
+	padding-left:10px;
+	 padding-right:10px; 
+}
+
+.totalopeninig{
+	padding-right:10px; 
+	border-top: solid 1px #000; 
+	border-bottom: solid 1px #000;
+}
+
+.padddingwithunderline{
+	padding-left:10px;
+	text-decoration:underline;
+}
+
+.pddingright10{
+	padding-right:10px; 
+}
+
+.noncurcss{
+	padding-right:10px;
+	 border-top:solid 1px #000;
+	  border-bottom: solid 1px #000;
+}
+
+.paddin5ps{
+	padding:5px;
+}
+
+.resumehead{
+	text-align: center; 
+	font-size: 25px;
+}
+
+.rpthtext{
+color:#3D9970;
+font-size: 50px; 
+font-weight: bold;
+font-family: Stencil Std, fantasy;
+font-variant: small-caps
+}
+
+.rptname{
+	color:black;
+	 font-size: 20px; 
+	 font-weight: bold;
+	  font-family:cursive;
+}
+
+.payrolladditiondeduction{
+	text-decoration: underline;font-weight: bold;
+}
+
+.paddingtop30{
+	padding-top:30px;
+}
+
+.padding10{
+	padding:10px;
+}
+
+.bankpayment{
+	width: 100%;
+}
+
+.appsettingqr{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height:150px;
+}
+
+.appsettingqrtxt{
+	font-weight: bold; 
+	margin-left: 25%;
+}
+
+.playstorelink{
+	border:1px solid #e4e5e7;
+}
+
+     .small-box {
+  border-radius: 2px;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.small-box > .inner {
+  padding: 10px;
+}
+.small-box > .small-box-footer {
+  position: relative;
+  text-align: center;
+  padding: 3px 0;
+  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+.small-box > .small-box-footer:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.15);
+}
+.pos-btn{
+    display: inline-block;
+    padding: 6px 12px !important;
+    border-radius: 2px;
+}
+.pos-btn:hover {
+  color: #fff;
+  background: rgb(42, 175, 42) !important;
+}
+.small-box h3 {
+  font-size: 38px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  white-space: nowrap;
+  padding: 0;
+}
+.small-box p {
+  font-size: 15px;
+  color:#fff;
+}
+
+.small-box p > small {
+  display: block;
+  font-size: 13px;
+  margin-top: 5px;
+  color:#fff;
+}
+.small-box h3,
+.small-box p {
+  z-index: 5;
+  color:#fff;
+}
+.small-box .icon {
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  z-index: 0;
+  font-size: 90px;
+  color: rgba(0, 0, 0, 0.15);
+}
+.small-box:hover {
+  text-decoration: none;
+  color: #f9f9f9;
+}
+.small-box:hover .icon {
+  font-size: 95px;
+}
+@media (max-width: 767px) {
+  .small-box {
+    text-align: center;
+  }
+  .small-box .icon {
+    display: none;
+  }
+
+}
+
+.whitecolor{
+	color:#fff;
+}
+
+.bg-pase{
+	background-color: #6cabbc;
+}
+
+.bg-bringal{
+	background-color:#8459cf;
+}
+
+.bg-darkgreen{
+	background-color:#749057;
+}
+
+.best-sale-title{
+	display: inline-block; 
+	line-height: 34px;
+}
+
+.best-sale-seeall{
+	display: inline-block;
+	 float: right;
+}
+
+.marginpadding-right0{
+	margin-right: 0px;
+	padding-right: 0px;
+}
+
+.marginpaddingleft0{
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+.filterbutton{
+	background-color: green;
+	color:#fff;
+}
+
+.piechartcontainer{
+	height: 280px; width: 100%;
+    
+}
+
+.charttitle{
+	display: inline-block;
+	 line-height: 34px;
+}
+
+.todayssaletitle{
+	overflow: scroll;
+	 height: 300px;
+}
+
+.altmsg{
+	display: none;
+}
+
+.error{
+	color: red !important;
+}
+
+#rcv_form{
+	margin-top: 250px;
+}
+
+.rcv{
+	background-color: #E3F8E9;
+}
+
+.page-loader-wrapper {
+    z-index: 99999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    overflow: hidden;
+    text-align: center
+}
+
+.page-loader-wrapper p {
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: #444
+}
+
+.page-loader-wrapper .loader {
+    position: relative;
+    top: calc(50% - 30px)
+}
+
+.preloader {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: container-rotate 1568ms linear infinite;
+    animation: container-rotate 1568ms linear infinite
+}
+
+.spinner-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-color: #f44336;
+    -ms-opacity: 1;
+    opacity: 1;
+    -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(.4, 0, .2, 1) infinite both;
+    animation: fill-unfill-rotate 5332ms cubic-bezier(.4, 0, .2, 1) infinite both
+}
+
+.spinner-layer.pl-green {
+    border-color: #37a000
+}
+
+.right {
+    float: right!important
+}
+
+.gap-patch {
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+    border-color: inherit
+}
+
+.gap-patch.circle {
+    width: 1000%;
+    left: -450%
+}
+
+.circle-clipper {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-color: inherit
+}
+
+.circle-clipper .circle {
+    width: 200%;
+    height: 100%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: inherit;
+    border-bottom-color: transparent!important;
+    border-radius: 50%;
+    -webkit-animation: none;
+    animation: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0
+}
+
+.circle-clipper.left .circle {
+    left: 0;
+    border-right-color: transparent!important;
+    -webkit-transform: rotate(129deg);
+    transform: rotate(129deg);
+    -webkit-animation: left-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both;
+    animation: left-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both
+}
+
+.circle-clipper.right .circle {
+    left: -100%;
+    border-left-color: transparent!important;
+    -webkit-transform: rotate(-129deg);
+    transform: rotate(-129deg);
+    -webkit-animation: right-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both;
+    animation: right-spin 1333ms cubic-bezier(.4, 0, .2, 1) infinite both
+}
+
+@-webkit-keyframes container-rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes container-rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes fill-unfill-rotate {
+    12.5% {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg)
+    }
+    25% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg)
+    }
+    37.5% {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg)
+    }
+    50% {
+        -webkit-transform: rotate(540deg);
+        transform: rotate(540deg)
+    }
+    62.5% {
+        -webkit-transform: rotate(675deg);
+        transform: rotate(675deg)
+    }
+    75% {
+        -webkit-transform: rotate(810deg);
+        transform: rotate(810deg)
+    }
+    87.5% {
+        -webkit-transform: rotate(945deg);
+        transform: rotate(945deg)
+    }
+    to {
+        -webkit-transform: rotate(1080deg);
+        transform: rotate(1080deg)
+    }
+}
+
+@keyframes fill-unfill-rotate {
+    12.5% {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg)
+    }
+    25% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg)
+    }
+    37.5% {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg)
+    }
+    50% {
+        -webkit-transform: rotate(540deg);
+        transform: rotate(540deg)
+    }
+    62.5% {
+        -webkit-transform: rotate(675deg);
+        transform: rotate(675deg)
+    }
+    75% {
+        -webkit-transform: rotate(810deg);
+        transform: rotate(810deg)
+    }
+    87.5% {
+        -webkit-transform: rotate(945deg);
+        transform: rotate(945deg)
+    }
+    to {
+        -webkit-transform: rotate(1080deg);
+        transform: rotate(1080deg)
+    }
+}
+
+@-webkit-keyframes left-spin {
+    from {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+    to {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+}
+
+@keyframes left-spin {
+    from {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+    to {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+}
+
+@-webkit-keyframes right-spin {
+    from {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+    to {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+}
+
+@keyframes right-spin {
+    from {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+    to {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+}
+
+ .top-fixed-link{
+        margin-left: 130px;
+    }
+
+    .pad_print_header{
+      height: 200px;
+    }
+
+    .padprint-date{
+      float: right !important;
+    }
+.pad-print-customername{
+  margin-left: 25% !important;
+}
+
+.padding-lefttitle{
+ /* padding-left: 60px;*/
+  float:right;
+
+}
+
+.panel-title{
+  padding-bottom: 10px;
+}
+.cal-btn-danger {
+    width: 45px;
+    height: 45px;
+    float: left;
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+    background: red;
+    border: none;
+    font-size: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+blink {
+    -webkit-animation: 2s linear infinite condemned_blink_effect; // for android
+    animation: 2s linear infinite condemned_blink_effect;
+}
+@-webkit-keyframes condemned_blink_effect { // for android
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+@keyframes condemned_blink_effect {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+.bg-warning{
+  background-color:#d6a615;
+}
+
+
+.update-btn{
+    display: inline-block;
+    padding: 6px 12px !important;
+    border-radius: 2px;
+    margin: 13px 2px;
+}
+.update-btn:hover {
+  color: #fff;
+  background: #ef5b5b !important;
+}
+
+.count-number {
+    font-size: 18px !important;
+    font-weight: 600;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif !important;
+}
+
+.is-qr-pos{
+    width: 3%;
+    height: 25px;
+}
+.invoice-img-position{
+    width: 250px;
+    height: auto;
+    max-height: 70px;
+}
+
+.voucher-center {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
+}
+
+@media(min-width: 992px){
+    .d-flex {
+        display: flex!important;
+    }.flex-wrap {
+        flex-wrap: wrap!important;
+    }.flex-fill {
+        flex: 1 1 auto!important;
+    }.w-100 {
+        width: 100%!important;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   Global Panel Card — all list & form pages
+═══════════════════════════════════════════ */
+.panel.panel-bd.lobidrag {
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06) !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    margin-bottom: 24px !important;
+}
+.panel.panel-bd.lobidrag .panel-heading {
+    background: #ffffff !important;
+    padding: 14px 22px !important;
+    border: none !important;
+    border-bottom: 2px solid #F1F5F9 !important;
+}
+.panel.panel-bd.lobidrag .panel-title {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin: 0 !important;
+}
+/* Support both h4 (old pages) and span (store/branch pages) for title text */
+.panel.panel-bd.lobidrag .panel-title h4,
+.panel.panel-bd.lobidrag .panel-title > span:first-child {
+    color: #1E293B !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    margin: 0 !important;
+}
+/* Add / action button in panel heading */
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-primary,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-primary {
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 7px 16px !important;
+    color: #fff !important;
+    letter-spacing: 0.3px !important;
+    transition: background 0.15s, box-shadow 0.15s !important;
+    text-decoration: none !important;
+}
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-primary:hover,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-primary:hover {
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+    box-shadow: 0 4px 12px rgba(139,92,246,0.35) !important;
+}
+/* A Save-styled button (e.g. "Filter") sitting in the header next to the
+   "Add X" button — e.g. Manage GRN's Filter + New GRN. .btn-success's
+   normal size (9px 24px, for prominent Save buttons on forms) looked
+   visibly bigger than .btn-primary's header size (7px 16px) when the two
+   sat side by side, so match it here specifically for the header context
+   without touching Save buttons on actual forms. */
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm),
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm) {
+    padding: 7px 16px !important;
+    font-size: 12px !important;
+    margin-left: 0 !important;
+}
+/* Filter — a secondary action next to the solid-gradient "Add X" button,
+   so it gets a distinct flat orange fill instead of the same gradient,
+   to visually read as "secondary" / a different kind of action. */
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm),
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm) {
+    background: #F59E0B !important;
+    border: 1.5px solid transparent !important;
+    color: #ffffff !important;
+}
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm) i,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm) i {
+    color: #ffffff !important;
+}
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm):hover,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm):hover {
+    background: #D97706 !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+}
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm):hover i,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm):hover i {
+    color: #ffffff !important;
+}
+/* Both header buttons share identical padding/font-size above, but a
+   <button> (Filter) and an <a> (Add X) still get different default
+   line-height from the browser, so they rendered at slightly different
+   heights side by side. vertical-align alone (not a forced height/
+   inline-flex — that broke wrapping on narrow screens, where "Filter"
+   and "Add X" stack and ended up overlapping) is enough to line them up. */
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-primary,
+.panel.panel-bd.lobidrag .panel-title .btn.btn-primary,
+.panel.panel-bd.lobidrag .padding-lefttitle .btn.btn-success:not(.btn-xs):not(.btn-sm),
+.panel.panel-bd.lobidrag .panel-title .btn.btn-success:not(.btn-xs):not(.btn-sm) {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 32px !important;
+    line-height: 1.3 !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+}
+/* The <span> that wraps the Filter + Add X buttons together needs to be
+   a wrapping flex row itself, or on narrow screens the two buttons (one a
+   <button>, one an <a>, both already inline-block from .btn) can overlap
+   instead of cleanly stacking. */
+.panel.panel-bd.lobidrag .panel-title > span + span {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+/* Panel body */
+.panel.panel-bd.lobidrag .panel-body {
+    background: #ffffff !important;
+    padding: 20px 22px !important;
+}
+/* Form controls */
+.panel.panel-bd.lobidrag .form-control {
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    color: #374151 !important;
+    background: #F8FAFC !important;
+    height: auto !important;
+    transition: border-color 0.16s, box-shadow 0.16s, background 0.16s !important;
+}
+.panel.panel-bd.lobidrag .form-control:focus {
+    border-color: #8b5cf6 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.12) !important;
+    outline: none !important;
+}
+.panel.panel-bd.lobidrag .form-control[readonly] {
+    background: #F1F5F9 !important;
+    color: #94A3B8 !important;
+    cursor: not-allowed !important;
+}
+/* Save / Update button — green (exclude xs/sm action-column buttons) */
+.panel.panel-bd.lobidrag .btn.btn-success:not(.btn-xs):not(.btn-sm) {
+    background: linear-gradient(135deg, #3b6cf0, #8b5cf6, #e661f3) !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 9px 24px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    letter-spacing: 0.3px !important;
+    transition: background 0.16s, box-shadow 0.16s !important;
+    margin-left: 6px !important;
+}
+.panel.panel-bd.lobidrag .btn.btn-success:not(.btn-xs):not(.btn-sm):hover {
+    background: linear-gradient(135deg, #3159c7, #7c4fe0, #d14fd6) !important;
+    box-shadow: 0 4px 12px rgba(139,92,246,0.35) !important;
+}
+/* "Save And Add Another" — secondary action. A flat color instead of the
+   gradient, both to mark it as secondary next to Save and because the
+   gradient washed out on this wider button (the lighter pink end ended up
+   dominating more of the surface, hurting contrast with the white text). */
+.panel.panel-bd.lobidrag .btn.btn-success[name="add-another"]:not(.btn-xs):not(.btn-sm) {
+    background: #7C5CE0 !important;
+}
+.panel.panel-bd.lobidrag .btn.btn-success[name="add-another"]:not(.btn-xs):not(.btn-sm):hover {
+    background: #6A47D6 !important;
+    box-shadow: 0 4px 12px rgba(124,92,224,0.35) !important;
+}
+/* Disabled Save/Save-And-Add-Another (before the form passes validation) —
+   needs to look clearly different from the clickable gradient/flat-purple
+   state, or users try clicking it and think the page is broken. Muted
+   grey instead of a dimmed version of the brand color, so it reads as
+   "not ready yet" rather than just "a slightly duller button". */
+.panel.panel-bd.lobidrag .btn.btn-success:not(.btn-xs):not(.btn-sm):disabled {
+    background: #CBD5E1 !important;
+    color: #64748B !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+/* Labels */
+.panel.panel-bd.lobidrag .col-form-label,
+.panel.panel-bd.lobidrag label.text-right {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+}
+/* Table shell — "separate" keeps each row's shadow readable without a
+   gap between rows (border-spacing: 0). */
+.panel.panel-bd.lobidrag .panel-body table.table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+/* Table header */
+.panel.panel-bd.lobidrag .panel-body table.table thead th {
+    background: #F1F5F9 !important;
+    color: #475569 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.7px !important;
+    border-bottom: 2px solid #DDD6FE !important;
+    border-top: none !important;
+    padding: 11px 14px !important;
+    white-space: nowrap !important;
+}
+/* Table body — every row reads as its own flat, shadowed "card" packed
+   flush against the next (no gap, no rounded corners). */
+.panel.panel-bd.lobidrag .panel-body table.table tbody td {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    color: #374151 !important;
+    vertical-align: middle !important;
+    background: #ffffff !important;
+    border: none !important;
+    border-top: 1px solid #F1F5F9 !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    box-shadow: 0 1px 3px rgba(15,23,42,.06) !important;
+}
+.panel.panel-bd.lobidrag .panel-body table.table tbody td:first-child {
+    border-left: 1px solid #F1F5F9 !important;
+}
+.panel.panel-bd.lobidrag .panel-body table.table tbody td:last-child {
+    border-right: 1px solid #F1F5F9 !important;
+}
+.panel.panel-bd.lobidrag .panel-body table.table tbody tr:hover td {
+    background: #F3F0FE !important;
+    transition: background 0.15s ease !important;
+}
+
+/* ═══════════════════════════════════════════
+   DataTable polish — search box, length select,
+   pagination shape, info text. Unscoped to
+   .dataTables_wrapper (not .panel-bd), so this also
+   reaches DataTables inside popups (login alert
+   modals etc.) that don't have the panel wrapper.
+═══════════════════════════════════════════ */
+
+/* Copy/CSV/Excel/PDF/Print export buttons — hidden sitewide. The `dom`
+   string in every DataTable init still includes the 'B' token that renders
+   this container, and the JS Buttons extension is still loaded/initialised
+   (removing that from every individual file would be dozens of edits for
+   the same visual result), so this is the one global switch instead. */
+.dataTables_wrapper .dt-buttons {
+    display: none !important;
+}
+
+/* Search input and length select — identical box (height/padding/border/
+   radius/font) everywhere, regardless of any page-local override, so
+   "Show" and "Search" always look like a matched pair across every list
+   screen. High-specificity selector (not just .dataTables_wrapper) so
+   this wins over older per-page <style> blocks that targeted these same
+   elements with their own one-off tweaks. */
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select,
+.panel.panel-bd.lobidrag .dataTables_wrapper .dataTables_filter input,
+.panel.panel-bd.lobidrag .dataTables_wrapper .dataTables_length select {
+    box-sizing: border-box !important;
+    height: 34px !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    color: #374151 !important;
+    background: #F8FAFC !important;
+    transition: border-color 0.16s, box-shadow 0.16s, background 0.16s !important;
+}
+.dataTables_wrapper .dataTables_filter input {
+    width: 220px !important;
+    margin-left: 8px !important;
+}
+.dataTables_wrapper .dataTables_length select {
+    width: 70px !important;
+}
+.dataTables_wrapper .dataTables_filter input:focus,
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: #8b5cf6 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.12) !important;
+    outline: none !important;
+}
+.dataTables_wrapper .dataTables_info {
+    color: #94A3B8 !important;
+    font-size: 12.5px !important;
+}
+
+/* Pagination — pill buttons with a soft border for definition (not the
+   heavier boxed look from before): light neutral border at rest, purple
+   border on hover, the active page's border matches its own solid fill. */
+.dataTables_wrapper .dataTables_paginate .pagination,
+.pagination {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button,
+.pagination > li > a,
+.pagination > li > span {
+    border-radius: 999px !important;
+    margin: 0 !important;
+    border: 1.5px solid #E2E8F0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+.pagination > li:not(.active) > a:hover,
+.pagination > li:not(.active) > span:hover {
+    border-color: #C4B5FD !important;
+}
+.pagination > .active > a,
+.pagination > .active > span {
+    border-color: #8b5cf6 !important;
+}
+
+/* Horizontal scroll on mobile */
+.panel.panel-bd.lobidrag .panel-body .table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .panel.panel-bd.lobidrag .panel-heading {
+        padding: 12px 14px !important;
+    }
+    .panel.panel-bd.lobidrag .panel-body {
+        padding: 12px 10px !important;
+    }
+    .panel.panel-bd.lobidrag .col-form-label,
+    .panel.panel-bd.lobidrag label.text-right {
+        text-align: left !important;
+        padding-top: 0 !important;
+        padding-bottom: 4px !important;
+    }
+    .panel.panel-bd.lobidrag .btn.btn-success:not(.btn-xs):not(.btn-sm) {
+        width: 100% !important;
+        margin: 6px 0 0 0 !important;
+    }
+    .panel.panel-bd.lobidrag .text-right {
+        text-align: left !important;
+    }
+    .panel.panel-bd.lobidrag .panel-body table.table thead th {
+        font-size: 10px !important;
+        padding: 8px 6px !important;
+    }
+    .panel.panel-bd.lobidrag .panel-body table.table tbody td {
+        font-size: 12px !important;
+        padding: 8px 6px !important;
+    }
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        width: 100% !important;
+        text-align: center !important;
+        float: none !important;
+    }
+    .dataTables_wrapper .dataTables_filter input,
+    .dataTables_wrapper .dataTables_length select {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* ============================================================
+   Global btn-info & btn-warning override
+   ============================================================ */
+
+/* btn-info — Edit action icon, solid purple to match the theme (was
+   Bootstrap's default cyan/blue; siblings btn-danger/btn-warning/btn-success
+   keep their flat red/orange/green, so btn-info gets the same flat
+   treatment instead of standing out as the only off-theme color). */
+.btn-info,
+.btn-info:visited {
+    background-color: #8b5cf6 !important;
+    color: #ffffff !important;
+    border: 1.5px solid #7C3AED !important;
+    border-radius: 3px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07) !important;
+}
+.btn-info i,
+.btn-info .fa,
+.btn-info span {
+    color: #ffffff !important;
+}
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+    background-color: #7C3AED !important;
+    border-color: #6D28D9 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.10) !important;
+}
+
+/* btn-warning — yellow background, white icon/text */
+.btn-warning,
+.btn-warning:visited {
+    background-color: #F59E0B !important;
+    color: #ffffff !important;
+    border: 1.5px solid #D97706 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.10) !important;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.open > .dropdown-toggle.btn-warning {
+    background-color: #D97706 !important;
+    border-color: #B45309 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.14) !important;
+}
+.btn-warning i,
+.btn-warning .fa,
+.btn-warning span {
+    color: #ffffff !important;
+}
+
+
+/* ============================================================
+   jQuery UI Datepicker — Clean Modern Theme
+   ============================================================ */
+
+/* Outer card */
+.ui-datepicker.ui-widget-content,
+.ui-datepicker {
+    background: #ffffff !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10) !important;
+    padding: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-size: 13px !important;
+    overflow: visible !important;
+    width: 260px !important;
+    z-index: 9999 !important;
+}
+
+/* Header bar */
+.ui-datepicker .ui-widget-header {
+    background: #f8fafc !important;
+    border: none !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    border-radius: 14px 14px 0 0 !important;
+    color: #1e293b !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    padding: 10px 40px !important;
+    position: relative !important;
+    line-height: 28px !important;
+}
+
+/* Month/Year title */
+.ui-datepicker .ui-datepicker-title {
+    text-align: center !important;
+    line-height: 28px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+}
+
+/* Prev / Next buttons — fully static, no movement, no animation */
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover,
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+    position: absolute !important;
+    top: 8px !important;
+    transform: none !important;
+    width: 26px !important;
+    height: 26px !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-prev:hover { left: 8px !important; right: auto !important; }
+
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker .ui-datepicker-next-hover,
+.ui-datepicker .ui-datepicker-next:hover { right: 8px !important; left: auto !important; }
+
+/* Hide "Prev"/"Next" text, show only ‹ › glyph */
+.ui-datepicker .ui-icon {
+    background-image: none !important;
+    text-indent: -9999px !important;
+    overflow: hidden !important;
+    width: 26px !important;
+    height: 26px !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.ui-datepicker .ui-datepicker-prev .ui-icon::after,
+.ui-datepicker .ui-datepicker-next .ui-icon::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 4px !important;
+    left: 0 !important;
+    width: 26px !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    line-height: 1 !important;
+    transform: none !important;
+}
+
+.ui-datepicker .ui-datepicker-prev .ui-icon::after { content: '‹' !important; }
+.ui-datepicker .ui-datepicker-next .ui-icon::after { content: '›' !important; }
+
+/* Calendar table */
+.ui-datepicker .ui-datepicker-calendar {
+    margin: 8px 8px 10px !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: calc(100% - 16px) !important;
+    table-layout: fixed !important;
+}
+
+/* Day-of-week header row */
+.ui-datepicker th {
+    color: #94a3b8 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.6px !important;
+    padding: 4px 0 6px !important;
+    text-align: center !important;
+    background: transparent !important;
+    border: none !important;
+    width: 14.28% !important;
+}
+
+/* Date cells */
+.ui-datepicker table.ui-datepicker-calendar td {
+    padding: 2px !important;
+    border: none !important;
+    text-align: center !important;
+    width: 14.28% !important;
+}
+
+/* Date links — default */
+.ui-datepicker .ui-state-default,
+.ui-datepicker td .ui-state-default,
+.ui-datepicker .ui-widget-content .ui-state-default {
+    border: none !important;
+    background: transparent !important;
+    color: #374151 !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    border-radius: 50% !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    line-height: 30px !important;
+    font-size: 12px !important;
+    transition: none !important;
+}
+
+/* Hover */
+.ui-datepicker .ui-state-hover,
+.ui-datepicker td:hover .ui-state-default,
+.ui-datepicker .ui-widget-content .ui-state-hover,
+.ui-datepicker .ui-widget-header .ui-state-hover {
+    background: #F3F0FE !important;
+    color: #8b5cf6 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    transform: none !important;
+    font-weight: 600 !important;
+}
+
+/* Selected date — solid purple circle */
+.ui-datepicker .ui-state-active,
+.ui-datepicker .ui-widget-content .ui-state-active,
+.ui-datepicker .ui-widget-header .ui-state-active {
+    background: #8b5cf6 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 50% !important;
+    font-weight: 700 !important;
+    transform: none !important;
+    box-shadow: 0 2px 8px rgba(139,92,246,0.35) !important;
+}
+
+/* Today's date — purple ring */
+.ui-datepicker .ui-state-highlight,
+.ui-datepicker .ui-widget-content .ui-state-highlight,
+.ui-datepicker .ui-widget-header .ui-state-highlight {
+    background: transparent !important;
+    color: #8b5cf6 !important;
+    border: 2px solid #8b5cf6 !important;
+    border-radius: 50% !important;
+    font-weight: 700 !important;
+    box-sizing: border-box !important;
+    line-height: 26px !important;
+}
+
+/* Today + selected */
+.ui-datepicker .ui-state-active.ui-state-highlight,
+.ui-datepicker .ui-widget-content .ui-state-active.ui-state-highlight {
+    background: #8b5cf6 !important;
+    color: #ffffff !important;
+    border: none !important;
+    line-height: 30px !important;
+}
+
+/* Disabled */
+.ui-datepicker .ui-state-disabled,
+.ui-datepicker .ui-widget-content .ui-state-disabled {
+    opacity: 0.3 !important;
+}
+
+/* Other-month dates */
+.ui-datepicker .ui-datepicker-other-month .ui-state-default {
+    color: #cbd5e1 !important;
+    font-weight: 400 !important;
+}
+
+/* Button pane (if used) */
+.ui-datepicker .ui-datepicker-buttonpane {
+    background: #f8fafc !important;
+    border-top: 1px solid #E2E8F0 !important;
+    padding: 8px 12px !important;
+    border-radius: 0 0 14px 14px !important;
+}

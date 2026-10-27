@@ -1,0 +1,2 @@
+UPDATE language SET english = 'Sales Report (Salesman Wise)' WHERE phrase = 'user_wise_sale_report';
+UPDATE language SET english = 'Sales Report (Salesman Wise)' WHERE phrase = 'user_wise_sales_report';
